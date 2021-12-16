@@ -1,7 +1,7 @@
 {
   "name": "git-quick-push",
   "description": "提供三个基本的git命令选项，提供常用的commit文本选项，通过列表选择的方式来使代码提交更方便",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "author": "zhuzhuxiaggboy",
   "private": false,
   "license": "MIT",
