@@ -57,7 +57,7 @@ const hander = {
         type: "list",
         name: "git",
         message: lolcat.fromString("请选择git命令"),
-        choices: ["git add .", "git commit", "git pull", "git push"]
+        choices: ["git commit", "git pull", "git push"]
       }
     ])
     // 是否安装了git
@@ -66,21 +66,26 @@ const hander = {
       shell.exit(1)
       return
     }
-    if (git !== "git commit") {
-      if (git == "git push") {
-        // 加载动画
-        const loading = ora("")
-        loading.color = "green"
-        loading.start()
-        shell.exec("git push")
-        loading.stop()
-        hander.list()
-        return
-      }
+    // git add .
+    shell.exec("git add .")
+    // git pull
+    if (git == "git pull") {
       shell.exec(git)
       hander.list()
       return
     }
+    // git push
+    if (git == "git push") {
+      // 加载动画
+      const loading = ora("")
+      loading.color = "green"
+      loading.start()
+      shell.exec("git push")
+      loading.stop()
+      hander.list()
+      return
+    }
+    // git commit
     const { type } = await inquirer.prompt([
       {
         type: "list",
@@ -89,7 +94,7 @@ const hander = {
         choices: commitArr
       }
     ])
-    // 接着可以更改commit内容
+    // 可以更改commit内容
     const { input } = await inquirer.prompt([
       {
         type: "input",
@@ -98,7 +103,7 @@ const hander = {
       }
     ])
     // 为commit添加相应emoji图标和文本
-    shell.exec(`git commit -m "${emojiArr[commitArr.indexOf(type)]}${type}"`)
+    shell.exec(`git commit -m "${emojiArr[commitArr.indexOf(type)]}${input ? input : type}"`)
     hander.list()
   }
 }
