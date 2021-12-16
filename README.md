@@ -20,13 +20,13 @@ git-push list
 
 注意，命令为 git-push 而非包名 git-quick-push，因为 git-quick-push 略长，所以设计简写为 git-push
 
-![image-20211216180718649](https://gitee.com/zqylzcwcxy/drawing-bed/raw/master/img/image-20211216180718649.png)
+![image-20211216180718649](https://gitee.com/zqylzcwcxy/picture-bed/raw/master/img/image-20211216180718649.png)
 
 
 
 #### ✨git commit 提供下提供了一些常用文本
 
-![image-20211216160338591](https://gitee.com/zqylzcwcxy/drawing-bed/raw/master/img/image-20211216160338591.png)
+![image-20211216160338591](https://gitee.com/zqylzcwcxy/picture-bed/raw/master/img/image-20211216160338591.png)
 
 
 
@@ -34,7 +34,7 @@ git-push list
 
 可以输入自定义的 commit 文本，替换 commit 列表的默认文本
 
-![image-20211216161054671](https://gitee.com/zqylzcwcxy/drawing-bed/raw/master/img/image-20211216161054671.png)
+![image-20211216161054671](https://gitee.com/zqylzcwcxy/picture-bed/raw/master/img/image-20211216161054671.png)
 
 
 
