@@ -1,11 +1,10 @@
 #! /usr/bin/env node
-import program from "commander" // 命令行
+import program from "commander" // 绑定命令
 import inquirer from "inquirer" // 交互式选项
 import figlet from "figlet" // 生成好看的logo文字
-import lolcat from "@darkobits/lolcatjs" // 生成随机颜色
-import shell from "shelljs" //脚本执行
+import lolcat from "@darkobits/lolcatjs" // 为文本添加随机颜色即炫彩
+import shell from "shelljs" // 脚本执行
 import ora from "ora" // 加载图标
-import symbols from "log-symbols"
 
 // 生成logo文字
 const text = figlet.textSync("git-quick-push")
@@ -48,9 +47,9 @@ const choices = [
 ]
 const emojiArr = choices.map(item => item.emoji)
 const commitArr = choices.map(item => item.commit)
-// commander事件触发函数
+
+// commander命令所触发的函数
 const hander = {
-  //  先选择commit类别
   list: async () => {
     const { git } = await inquirer.prompt([
       {
@@ -66,17 +65,14 @@ const hander = {
       shell.exit(1)
       return
     }
-    // git add .
     shell.exec("git add .")
-    // git pull
     if (git == "git pull") {
       shell.exec(git)
       hander.list()
       return
     }
-    // git push
     if (git == "git push") {
-      // 加载动画
+      // 添加加载动画
       const loading = ora("")
       loading.color = "green"
       loading.start()
@@ -85,7 +81,6 @@ const hander = {
       hander.list()
       return
     }
-    // git commit
     const { type } = await inquirer.prompt([
       {
         type: "list",
@@ -94,7 +89,6 @@ const hander = {
         choices: commitArr
       }
     ])
-    // 可以更改commit内容
     const { input } = await inquirer.prompt([
       {
         type: "input",
