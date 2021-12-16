@@ -1,0 +1,38 @@
+{
+  "name": "git-quick-push",
+  "description": "基于git命令提交代码，并提供一些commit规范，让提交本地仓库代码更快捷",
+  "version": "1.0.8",
+  "author": "zhuzhuxiaggboy",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zqy233/git-quick-push"
+  },
+  "bugs": {
+    "url": "https://github.com/zqy233/git-quick-push/issues"
+  },
+  "bin": {
+    "git-push": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@darkobits/lolcatjs": "^3.1.5",
+    "chalk": "^5.0.0",
+    "commander": "^8.3.0",
+    "download-git-repo": "^3.0.2",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.0",
+    "log-symbols": "^5.1.0",
+    "ora": "^6.0.1",
+    "shelljs": "^0.8.4"
+  },
+  "type": "module",
+  "keywords": [
+    "git",
+    "shell",
+    "node"
+  ]
+}
