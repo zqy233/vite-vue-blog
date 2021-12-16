@@ -2,6 +2,8 @@
 
 提供三个基本的 git 命令选项，提供常用的 commit 文本选项（具体查看底部文档），通过列表选择的方式来使 git 提交更方便
 
+
+
 ### 全局安装
 
 ```bash
@@ -10,7 +12,7 @@ npm i -g git-quick-push
 
 ### 使用
 
-目前只有一个命令，list，用于显示四个常用的 git 命令列表
+目前只有一个命令，list，用于显示 git 命令列表
 
 ```
 git-push list
@@ -18,17 +20,23 @@ git-push list
 
 注意，命令为 git-push 而非包名 git-quick-push，因为 git-quick-push 略长，所以设计简写为 git-push
 
-![image-20211216171152611](https://gitee.com/zqylzcwcxy/drawing-bed/raw/master/img/image-20211216171152611.png)
+![image-20211216180718649](https://gitee.com/zqylzcwcxy/drawing-bed/raw/master/img/image-20211216180718649.png)
+
+
 
 #### git commit 提供下提供了一些常用文本
 
 ![image-20211216160338591](https://gitee.com/zqylzcwcxy/drawing-bed/raw/master/img/image-20211216160338591.png)
+
+
 
 #### 如果你对 commit 默认文本不满意
 
 可以输入自定义的 commit 文本，替换 commit 列表的默认文本
 
 ![image-20211216161054671](https://gitee.com/zqylzcwcxy/drawing-bed/raw/master/img/image-20211216161054671.png)
+
+
 
 ### 自动为 commit 文本提供相应 emoji
 
