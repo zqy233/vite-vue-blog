@@ -48,7 +48,6 @@ const choices = [
 ]
 const emojiArr = choices.map(item => item.emoji)
 const commitArr = choices.map(item => item.commit)
-
 // commander事件触发函数
 const hander = {
   //  先选择commit类别
@@ -70,7 +69,7 @@ const hander = {
     if (git !== "git commit") {
       if (git == "git push") {
         // 加载动画
-        const loading = ora("Loading")
+        const loading = ora("")
         loading.color = "green"
         loading.start()
         shell.exec("git push")
