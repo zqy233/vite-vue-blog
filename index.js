@@ -53,7 +53,35 @@ const commitArr = choices.map(item => item.commit)
 const hander = {
   //  先选择commit类别
   list: async () => {
-    console.log(textColor)
+    const { git } = await inquirer.prompt([
+      {
+        type: "list",
+        name: "git",
+        message: lolcat.fromString("请选择git命令"),
+        choices: ["git add .", "git commit", "git pull", "git push"]
+      }
+    ])
+    // 是否安装了git
+    if (!shell.which("git")) {
+      shell.echo("Sorry, you need download git first")
+      shell.exit(1)
+      return
+    }
+    if (git !== "git commit") {
+      if (git == "git push") {
+        // 加载动画
+        const loading = ora("Loading")
+        loading.color = "green"
+        loading.start()
+        shell.exec("git push")
+        loading.stop()
+        hander.list()
+        return
+      }
+      shell.exec(git)
+      hander.list()
+      return
+    }
     const { type } = await inquirer.prompt([
       {
         type: "list",
@@ -70,22 +98,9 @@ const hander = {
         message: lolcat.fromString("可输入自定义commit说明（不输入则使用默认文本）")
       }
     ])
-    // 加载动画
-    const loading = ora("Loading")
-    loading.color = "green"
-    loading.start()
-    // 是否安装了git
-    if (!shell.which("git")) {
-      shell.echo("Sorry, you need download git first")
-      shell.exit(1)
-      return
-    }
     // 为commit添加相应emoji图标和文本
-    shell.exec(`git add .`)
     shell.exec(`git commit -m "${emojiArr[commitArr.indexOf(type)]}${type}"`)
-    shell.exec("git pull")
-    shell.exec("git push")
-    loading.stop()
+    hander.list()
   }
 }
 
@@ -94,6 +109,7 @@ program
   .command("list")
   .description("显示commit类别列表")
   .action(async () => {
+    console.log(textColor)
     hander.list()
   })
 
