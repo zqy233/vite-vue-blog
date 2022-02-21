@@ -1,7 +1,7 @@
 {
   "name": "git-quick-push",
-  "description": "列表方式使用git命令，快速创建vite+vue3+ts项目并运行",
-  "version": "1.0.15",
+  "description": "1.列表方式使用git命令，2.快速创建vite+vue3+ts项目并运行",
+  "version": "1.0.18",
   "author": "zhuzhuxiaggboy",
   "private": false,
   "license": "MIT",
@@ -13,10 +13,7 @@
     "url": "https://github.com/zqy233/git-quick-push/issues"
   },
   "bin": {
-    "git-push": "bunder.js"
-  },
-  "scripts": {
-    "build": "babel index.js --out-file bunder.js"
+    "git-push": "index.js"
   },
   "dependencies": {
     "@darkobits/lolcatjs": "^3.1.5",
