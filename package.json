@@ -1,7 +1,7 @@
 {
   "name": "git-quick-push",
-  "description": "提供三个基本的git命令选项，提供常用的commit文本选项，通过列表选择的方式来使代码提交更方便",
-  "version": "1.0.14",
+  "description": "列表方式使用git命令，快速创建vite+vue3+ts项目并运行",
+  "version": "1.0.15",
   "author": "zhuzhuxiaggboy",
   "private": false,
   "license": "MIT",
@@ -25,7 +25,6 @@
     "figlet": "^1.5.2",
     "handlebars": "^4.7.7",
     "inquirer": "^8.2.0",
-    "log-symbols": "^5.1.0",
     "ora": "^5.4.0",
     "shelljs": "^0.8.4"
   },
@@ -34,9 +33,5 @@
     "git",
     "shell",
     "node"
-  ],
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1"
-  }
+  ]
 }

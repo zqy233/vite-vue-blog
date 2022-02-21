@@ -1,11 +1,11 @@
 ### 📝 说明
 
-> 使用 es next的 node 脚本，所以需要较高的 node 版本
+> node 版本 >= 12.19.0
 
 目前有两个命令
 
-- list，用于显示 git 命令列表，通过列表选择的方式来使 git 提交更方便
-- create，提供 vite+vue3+ts+pinia 模板快速开发项目（具体配置可查看模板README）
+- list，显示 git 命令列表，通过列表选择的方式来使 git 提交更方便
+- create，提供 vite+vue3+ts+pinia 模板快速开发项目，下载依赖与运行（具体配置可查看模板 README）
 
 ### 🎉 全局安装
 
@@ -15,9 +15,9 @@ npm i -g git-quick-push
 
 ### ✨ 使用
 
-### ✨git-push list
-
 注意，命令为 git-push 而非包名 git-quick-push，因为 git-quick-push 略长，所以设计简写为 git-push
+
+### ✨git-push list
 
 ![image-20211216180718649](https://gitee.com/zqylzcwcxy/picture-bed/raw/master/img/image-20211216180718649.png)
 
@@ -46,7 +46,7 @@ npm i -g git-quick-push
 
 ### ✨git-push create
 
-输入项目名，创建 vite+vue3+ts+pinia 模板到当前目录
+输入项目名，创建 vite+vue3+ts+pinia 模板到当前目录，下载依赖与运行
 
 ![image-20220221125502607](https://gitee.com/zqylzcwcxy/picture-bed/raw/master/img/image-20220221125502607.png)
 
