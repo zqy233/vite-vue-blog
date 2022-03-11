@@ -1,12 +1,12 @@
 #! /usr/bin/env node
-const program = require("commander") // 绑定命令
-const inquirer = require("inquirer") // 交互式选项
-const lolcat = require("@darkobits/lolcatjs") // 为文本添加随机颜色即炫彩
-const shell = require("shelljs") // 脚本执行
-const ora = require("ora") // 加载图标
-const fs = require("fs") // 读写文件
-const gitClone = require("download-git-repo") // git clone
-const handlebars = require("handlebars") // 按照插值表达式填充值
+const program = require("commander")
+const inquirer = require("inquirer")
+const lolcat = require("@darkobits/lolcatjs")
+const shell = require("shelljs")
+const ora = require("ora")
+const fs = require("fs")
+const gitClone = require("download-git-repo")
+const handlebars = require("handlebars")
 
 const showLogo = require("./logo")
 const { emojiArr, commitArr } = require("./choices")
@@ -14,7 +14,6 @@ const clearDir = require("./deleteDir")
 
 showLogo()
 
-// 克隆远程仓库
 function download(projectName) {
   const loading = ora("downloading...").start()
   gitClone(
@@ -90,7 +89,6 @@ const hander = {
         )
       }
     ])
-    // 为commit添加相应emoji图标和文本
     shell.exec(
       `git commit -m "${emojiArr[commitArr.indexOf(type)]}${input ? type + ": " + input : type}"`
     )
