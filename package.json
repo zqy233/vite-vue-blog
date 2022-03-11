@@ -1,7 +1,7 @@
 {
   "name": "git-quick-push",
-  "description": "1.列表方式使用git命令，2.快速创建vite+vue3+ts项目并运行",
-  "version": "1.0.18",
+  "description": "node script for git commands",
+  "version": "1.0.19",
   "author": "zhuzhuxiaggboy",
   "private": false,
   "license": "MIT",
@@ -13,7 +13,7 @@
     "url": "https://github.com/zqy233/git-quick-push/issues"
   },
   "bin": {
-    "git-push": "index.js"
+    "git-a": "./src/index.js"
   },
   "dependencies": {
     "@darkobits/lolcatjs": "^3.1.5",
