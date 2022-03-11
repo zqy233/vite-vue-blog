@@ -18,35 +18,35 @@ console.log(textColor)
 const choices = [
   {
     emoji: ":tada:",
-    commit: "first commit : "
+    commit: "first commit "
   },
   {
     emoji: ":sparkles:",
-    commit: "new feature : "
+    commit: "new feature "
   },
   {
     emoji: ":bug:",
-    commit: "fix bug : "
+    commit: "fix bug "
   },
   {
     emoji: ":lipstick:",
-    commit: "update ui and style files : "
+    commit: "update ui and style files "
   },
   {
     emoji: ":fire:",
-    commit: "remove code or file : "
+    commit: "remove code or file "
   },
   {
     emoji: ":art:",
-    commit: "improve code structure or code format : "
+    commit: "improve code structure or code format "
   },
   {
     emoji: ":zap:",
-    commit: "improve performance : "
+    commit: "improve performance "
   },
   {
     emoji: ":memo:",
-    commit: "document writing : "
+    commit: "document writing "
   }
 ]
 const emojiArr = choices.map(item => item.emoji)
@@ -135,15 +135,12 @@ const hander = {
       }
     ])
     if (git == "exit") return shell.exit(1)
-
     // 是否安装了git
     if (!shell.which("git")) {
       shell.echo("Sorry, you need gitClone git first")
       return shell.exit(1)
     }
-
     shell.exec("git add .")
-
     // 选择git pull 或 git push
     if (git == "git pull" || git == "git push") {
       const loading = ora("").start() // 添加加载动画
@@ -151,13 +148,12 @@ const hander = {
       loading.succeed() // 结束加载动画
       return hander.list() // 继续显示列表
     }
-
     const { type } = await inquirer.prompt([
       {
         type: "list",
         name: "type",
         message: lolcat.fromString("please select the commit category"),
-        choices: commitArr.map(item => item.replace(":", ""))
+        choices: commitArr
       }
     ])
     const { input } = await inquirer.prompt([
@@ -171,9 +167,7 @@ const hander = {
     ])
     // 为commit添加相应emoji图标和文本
     shell.exec(
-      `git commit -m "${emojiArr[commitArr.indexOf(type)]}${
-        input ? type + input : type.replace(":", "")
-      }"`
+      `git commit -m "${emojiArr[commitArr.indexOf(type)]}${input ? type + ":" + input : type}"`
     )
     hander.list()
   },
