@@ -92,7 +92,7 @@ const hander = {
     ])
     // 为commit添加相应emoji图标和文本
     shell.exec(
-      `git commit -m "${emojiArr[commitArr.indexOf(type)]}${input ? type + ":" + input : type}"`
+      `git commit -m "${emojiArr[commitArr.indexOf(type)]}${input ? type + ": " + input : type}"`
     )
     hander.list()
   },

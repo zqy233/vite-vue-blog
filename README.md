@@ -1,4 +1,4 @@
-## EN | [中文][https://github.com/zqy233/git-quick-push/blob/master/README-CN.md]
+## EN | [中文](https://github.com/zqy233/git-quick-push/blob/master/README-CN.md)
 
 > required node version 12.20.0 || 14.13.1 || >=16.0.0
 
