@@ -18,35 +18,35 @@ console.log(textColor)
 const choices = [
   {
     emoji: ":tada:",
-    commit: "初次提交"
+    commit: "first commit : "
   },
   {
     emoji: ":sparkles:",
-    commit: "引入新功能"
+    commit: "new feature : "
   },
   {
     emoji: ":bug:",
-    commit: "修复bug"
+    commit: "fix bug : "
   },
   {
     emoji: ":lipstick:",
-    commit: "更新UI和样式文件"
+    commit: "update ui and style files : "
   },
   {
     emoji: ":fire:",
-    commit: "移除代码或文件"
+    commit: "remove code or file : "
   },
   {
     emoji: ":art:",
-    commit: "改进代码结构/代码格式"
+    commit: "improve code structure or code format : "
   },
   {
     emoji: ":zap:",
-    commit: "提升性能"
+    commit: "improve performance : "
   },
   {
     emoji: ":memo:",
-    commit: "撰写文档"
+    commit: "document writing : "
   }
 ]
 const emojiArr = choices.map(item => item.emoji)
@@ -88,34 +88,39 @@ function clearDir(path) {
 
 // 克隆远程仓库
 function download(projectName) {
-  const loading = ora("正在下载模版...").start()
-  gitClone("https://gitee.com:zqylzcwcxy/vite-vue3-tempalte#master", projectName, { clone: true }, err => {
-    if (err) {
-      console.log(err) // 打印错误
-      loading.fail() // 显示x号
-    } else {
-      loading.succeed() // 显示勾号
-      const packagePath = `${projectName}/package.json`
-      const packageContent = fs.readFileSync(packagePath, "utf8") // 读取package.json数据
-      const packageResult = handlebars.compile(packageContent)({ name: projectName }) // 填充更新package.json数据
-      fs.writeFileSync(packagePath, packageResult) // 写入package.json
-      console.log(lolcat.fromString("初始化模版成功"))
-      shell.cd(projectName)
-      if (!shell.which("code")) {
-        shell.echo("need vscode to run script")
-        shell.exit(1)
+  const loading = ora("downloading...").start()
+  gitClone(
+    "https://gitee.com:zqylzcwcxy/vite-vue3-tempalte#master",
+    projectName,
+    { clone: true },
+    err => {
+      if (err) {
+        console.log(err) // 打印错误
+        loading.fail() // 显示x号
       } else {
-        shell.exec("code ./")
-      }
-      if (!shell.which("yarn")) {
-        shell.echo("need yarn to run auto script")
-        shell.exit(1)
-      } else {
-        shell.exec("yarn")
-        shell.exec("yarn dev")
+        loading.succeed() // 显示勾号
+        const packagePath = `${projectName}/package.json`
+        const packageContent = fs.readFileSync(packagePath, "utf8") // 读取package.json数据
+        const packageResult = handlebars.compile(packageContent)({ name: projectName }) // 填充更新package.json数据
+        fs.writeFileSync(packagePath, packageResult) // 写入package.json
+        console.log(lolcat.fromString("初始化模版成功"))
+        shell.cd(projectName)
+        if (!shell.which("code")) {
+          shell.echo("need vscode to run script")
+          shell.exit(1)
+        } else {
+          shell.exec("code ./")
+        }
+        if (!shell.which("yarn")) {
+          shell.echo("need yarn to run auto script")
+          shell.exit(1)
+        } else {
+          shell.exec("yarn")
+          shell.exec("yarn dev")
+        }
       }
     }
-  })
+  )
 }
 
 // commander命令所触发的函数
@@ -125,41 +130,51 @@ const hander = {
       {
         type: "list",
         name: "git",
-        message: lolcat.fromString("请选择git命令"),
+        message: lolcat.fromString("please choose git commands"),
         choices: ["git commit", "git pull", "git push", "exit"]
       }
     ])
     if (git == "exit") return shell.exit(1)
+
     // 是否安装了git
     if (!shell.which("git")) {
       shell.echo("Sorry, you need gitClone git first")
       return shell.exit(1)
     }
+
     shell.exec("git add .")
-    // 选择git pull 或 git pusj
+
+    // 选择git pull 或 git push
     if (git == "git pull" || git == "git push") {
       const loading = ora("").start() // 添加加载动画
       shell.exec(git)
       loading.succeed() // 结束加载动画
       return hander.list() // 继续显示列表
     }
+
     const { type } = await inquirer.prompt([
       {
         type: "list",
         name: "type",
-        message: lolcat.fromString("请选择commit类别"),
-        choices: commitArr
+        message: lolcat.fromString("please select the commit category"),
+        choices: commitArr.map(item => item.replace(":", ""))
       }
     ])
     const { input } = await inquirer.prompt([
       {
         type: "input",
         name: "input",
-        message: lolcat.fromString("可输入自定义commit说明（不输入则使用默认文本）")
+        message: lolcat.fromString(
+          "You can input a custom commit message (if not, the default text will be used)"
+        )
       }
     ])
     // 为commit添加相应emoji图标和文本
-    shell.exec(`git commit -m "${emojiArr[commitArr.indexOf(type)]}${input ? input : type}"`)
+    shell.exec(
+      `git commit -m "${emojiArr[commitArr.indexOf(type)]}${
+        input ? type + input : type.replace(":", "")
+      }"`
+    )
     hander.list()
   },
   create: async () => {
@@ -177,25 +192,16 @@ const hander = {
       if (noExist) {
         download(projectName)
       } else {
-        console.log(lolcat.fromString("已存在该名称项目"))
+        console.log(lolcat.fromString("There is already a folder with that name"))
         const { intention } = await inquirer.prompt([
           {
             type: "list",
             name: "intention",
-            message: lolcat.fromString("是否覆盖该名称项目？"),
-            choices: ["要的就是这个效果", "我再想想"]
+            message: lolcat.fromString("Overwrite folder of this name？"),
+            choices: ["Yes", "No"]
           }
         ])
-        if (intention == "我再想想") return
-        const { confirm } = await inquirer.prompt([
-          {
-            type: "list",
-            name: "confirm",
-            message: lolcat.fromString("请谨慎选择，原文件夹下内容将会丢失！"),
-            choices: ["坚定不移", "那算啦"]
-          }
-        ])
-        if (confirm == "那算啦") return
+        if (intention == "No") return
         clearDir(projectName)
         download(projectName)
       }
@@ -206,7 +212,7 @@ const hander = {
 // list命令
 program
   .command("list")
-  .description("显示commit类别列表")
+  .description("show a list of git commands")
   .action(() => {
     hander.list()
   })
@@ -214,10 +220,10 @@ program
 // create命令
 program
   .command("create")
-  .description("创建vite-vue3模板项目")
+  .description("create vite-vue3 template")
   .action(() => {
     hander.create()
   })
 
-// // process.argv是一个数组，包含node.exe的绝对路径和npm包的绝对路径
+// process.argv是一个数组，包含node.exe的绝对路径和npm包的绝对路径
 program.version("1.0.18").parse(process.argv)

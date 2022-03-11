@@ -1,11 +1,15 @@
 ### 📝 说明
 
-> 需要 node 版本 12.20.0 || 14.13.1 || >=16.0.0
+> 需要node版本 12.20.0 || 14.13.1 || >=16.0.0
+>
+> required node version 12.20.0 || 14.13.1 || >=16.0.0
 
-目前有两个命令
+目前有两个命令/two commands now
 
 - list，显示 git 命令列表，通过列表选择的方式来使 git 提交更方便
+- list，display the list of git commands, so make git  submissions more convenient through list selection
 - create，提供 vite+vue3+ts+pinia 模板快速开发项目，下载依赖与运行（具体配置可查看模板 README）
+- create , 
 
 ### 🎉 全局安装
 
@@ -31,18 +35,18 @@ npm i -g git-quick-push
 
 ![image-20211216161054671](https://gitee.com/zqylzcwcxy/picture-bed/raw/master/img/image-20211216161054671.png)
 
-#### 🚀 自动为 commit 文本提供相应 emoji
+#### 🚀自动为 commit 文本提供相应 emoji / automatically provide emoji for commit message
 
-| emoji         | emoji 代码   | commit 说明             |
+| emoji         | emoji 代码   | commit             |
 | ------------- | ------------ | ----------------------- |
-| 🎉 （庆祝）   | `:tada:`     | 初次提交                |
-| ✨ （火花）   | `:sparkles:` | 引入新功能              |
-| 🐛 (bug)      | `:bug:`      | 修复 bug                |
-| 💄 （口红）   | `:lipstick:` | 更新 UI 和样式文件      |
-| 🔥 （火焰）   | `:fire:`     | 移除代码或文件          |
-| 🎨 （调色板） | `:art:`      | 改进代码结构 / 代码格式 |
-| ⚡ （闪电）   | `:zap:`      | 提升性能                |
-| 📝 （备忘录） | `:memo:`     | 撰写文档                |
+| 🎉   | `:tada:`     | first commit : |
+| ✨   | `:sparkles:` | new feature : |
+| 🐛      | `:bug:`      | fix bug : |
+| 💄   | `:lipstick:` | update ui and style files : |
+| 🔥   | `:fire:`     | remove code or file : |
+| 🎨 | `:art:`      | improve code structure or code format : |
+| ⚡   | `:zap:`      | improve performance : |
+| 📝 | `:memo:`     | document writing : |
 
 ### ✨git-push create
 
