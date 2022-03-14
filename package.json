@@ -1,7 +1,7 @@
 {
   "name": "git-quick-push",
   "description": "node script for git commands",
-  "version": "1.0.19",
+  "version": "1.0.21",
   "author": "zhuzhuxiaggboy",
   "private": false,
   "license": "MIT",
@@ -13,7 +13,7 @@
     "url": "https://github.com/zqy233/git-quick-push/issues"
   },
   "bin": {
-    "git-push": "./src/index.js"
+    "git-a": "./src/index.js"
   },
   "dependencies": {
     "@darkobits/lolcatjs": "^3.1.5",
