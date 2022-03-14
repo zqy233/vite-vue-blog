@@ -1,3 +1,5 @@
+const fs = require("fs")
+
 function emptyDir(path) {
   const files = fs.readdirSync(path)
   files.forEach(file => {
@@ -23,7 +25,9 @@ function rmEmptyDir(path) {
   }
 }
 
-module.exports = function clearDir(path) {
+function clearDir(path) {
   emptyDir(path)
   rmEmptyDir(path)
 }
+
+module.exports = clearDir

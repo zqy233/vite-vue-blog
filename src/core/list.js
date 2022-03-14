@@ -2,8 +2,8 @@ const ora = require("ora")
 const shell = require("shelljs")
 const lolcat = require("@darkobits/lolcatjs")
 const inquirer = require("inquirer")
+const { emojiArr, commitArr } = require("../choices")
 
-const { emojiArr, commitArr } = require("./choices")
 const list = async () => {
   const { git } = await inquirer.prompt([
     {
@@ -15,7 +15,7 @@ const list = async () => {
   ])
   if (git == "exit") return shell.exit(1)
   if (!shell.which("git")) {
-    shell.echo("Sorry, you need gitClone git first")
+    shell.echo("Sorry, you need download git first")
     return shell.exit(1)
   }
   shell.exec("git add .")

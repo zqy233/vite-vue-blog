@@ -3,6 +3,7 @@ const shell = require("shelljs")
 const gitClone = require("download-git-repo")
 const handlebars = require("handlebars")
 const lolcat = require("@darkobits/lolcatjs")
+const fs = require("fs")
 
 /**
  * @param  projectName name of the created project
