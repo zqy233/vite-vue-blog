@@ -45,6 +45,6 @@ const list = async () => {
   shell.exec(
     `git commit -m "${emojiArr[commitArr.indexOf(type)]}${input ? type + ": " + input : type}"`
   )
-  hander.list()
+  list()
 }
 module.exports = list
