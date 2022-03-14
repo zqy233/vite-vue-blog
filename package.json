@@ -13,7 +13,7 @@
     "url": "https://github.com/zqy233/git-quick-push/issues"
   },
   "bin": {
-    "git-a": "./src/index.js"
+    "git-push": "./src/index.js"
   },
   "dependencies": {
     "@darkobits/lolcatjs": "^3.1.5",

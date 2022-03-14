@@ -3,7 +3,6 @@ const program = require("commander")
 const showLogo = require("./utils/showLogo")
 const list = require("./core/list")
 const create = require("./core/create")
-
 // show a beautiful logo "git-quick-push"
 showLogo()
 
