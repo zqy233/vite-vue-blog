@@ -23,7 +23,7 @@ const list = async () => {
     const loading = ora("").start()
     shell.exec(git)
     loading.succeed()
-    return hander.list()
+    return list()
   }
   const { type } = await inquirer.prompt([
     {
