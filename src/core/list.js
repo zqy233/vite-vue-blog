@@ -37,14 +37,10 @@ const list = async () => {
     {
       type: "input",
       name: "input",
-      message: lolcat.fromString(
-        "You can input a custom commit message (if not, the default text will be used)"
-      )
+      message: lolcat.fromString("full details :")
     }
   ])
-  shell.exec(
-    `git commit -m "${emojiArr[commitArr.indexOf(type)]}${input ? type + ": " + input : type}"`
-  )
+  shell.exec(`git commit -m "${emojiArr[commitArr.indexOf(type)]}${input ? type + ": " + input : type}"`)
   list()
 }
 module.exports = list
